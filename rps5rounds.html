@@ -4,13 +4,6 @@
   <title>Page Title</title>
 </head>
 <body>
-    <h1> Rock Paper Scissors </h1>
-    <button id="rock"> Rock </button>
-    <button id="paper"> Paper </button>
-    <button id="scissors"> Scissors </button>
-
-    <div id = "results"></div>
-
   <script>
 
     function computerPlay() {
@@ -92,54 +85,7 @@
 
     }
 
-    const results = document.querySelector('#results')
-
-    let gameNumber = 1;
-    let wins = 0;
-    let losses = 0;
-
-    const computerSelectionDisplay = document.createElement('p')
-    results.appendChild(computerSelectionDisplay);
-
-
-    const currentGame = document.createElement('h2')
-    results.appendChild(currentGame);
-
-    const roundResult = document.createElement('p')
-    results.appendChild(roundResult);
-
-    const scoreDisplay = document.createElement('h3')
-    results.appendChild(scoreDisplay);
-
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-      button.addEventListener('click', (e) => {
-        currentGame.textContent = "Game : " + gameNumber
-        let playerSelection = button.id;
-        let computerSelection = computerPlay();
-        computerSelectionDisplay.textContent = "The computer throws " + computerSelection;
-        let playResult = playRockPaperSissor(playerSelection,computerSelection);
-        roundResult.textContent = "You " + playResult + " this round";
-        if (playResult == 'Win') {
-          wins++;
-        } else if (playResult == 'Lose') {
-          losses++;
-        }
-        scoreDisplay.textContent =  wins + " wins and " + losses + " losses";
-
-        if (wins >=5 || losses >=5) {
-          scoreDisplay.textContent = "You " + (wins>losses ? "WIN" : "LOSE") + " with " + scoreDisplay.textContent;
-          gameNumber++;
-          wins = losses = 0;
-
-        } else {
-          scoreDisplay.textContent = "Current Score is " + scoreDisplay.textContent;
-        }
-
-      });
-
-    });
-    // game(5);
+    game(5);
 
     // console.log("Lets Play Rock Paper Scissors")
     // let computerSelection = computerPlay();
